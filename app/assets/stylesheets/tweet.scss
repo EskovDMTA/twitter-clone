@@ -1,0 +1,37 @@
+.tweet{
+    &:hover{
+        background-color: $gray-100;
+    }
+}
+
+.tweets-action-icon {
+	width: 20px;
+	height: 20px;
+
+}
+
+.tweet-action-links {
+    a {
+        span {
+
+        }
+    &.replies {
+        &:hover {
+            background-color: $blue-100
+        }
+
+    }
+
+    &.likes {
+        &:hover {
+            background-color: $red-300
+        }
+    }
+    
+    &.binocular {
+        &:hover {
+            background-color: $green-300
+        }
+}
+}
+}

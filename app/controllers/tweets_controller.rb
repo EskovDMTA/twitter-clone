@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class TweetsController < ApplicationController 
 
 	def create 
 		tweet = Tweet.new(tweet_params.merge(user: current_user))
@@ -12,5 +12,6 @@ class TweetsController < ApplicationController
 	def tweet_params 
 		params.require(:tweet).permit(:body)
 	end
+
 
 end

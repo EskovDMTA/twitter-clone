@@ -1,12 +1,24 @@
-<h1>Hello</h1>
+<div class="container">
+  <div class="row">
 
-	<%= form_with model: Tweet.new, url: tweets_path, local: true  do |f| %>
-		<%= f.text_field :body %>
-		<%= f.submit "Create tweet", class: "btn btn-primary btn-lg" %>
-	<% end %>
+    <div class="col">
+      <%= render "shared/sidebar"%>
+    </div>
 
-	<%= Tweet.find_each do |tweet| %>
-		<%= tweet.body %>
-	<% end %>
+    <div class="col-7">
+      <div class="mb-4 pt-4">
+        <%=link_to "На главную", root_path, class:"fs-4 text-decoration-none text-black fw-semibold"%>
+      </div>
+      <div class="mb-3"><%= render "shared/tweets-form"%></div>
+      <%= render Tweet.order_desc %>
+    </div>
+    <div class="col">
+      Клонка
+    </div>
+  </div>
+</div>
 
-<%= link_to "Exit", destroy_user_session_path, data: {turbo_method: "delete"}, class: "btn btn-primary btn-lg" %>
+
+
+	
+
