@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <%= render "shared/sidebar"%>
+    </div>
+
+    <div class="col-7">
+      <div class="mb-4 pt-4">
+        <%=link_to "На главную", root_path, class:"fs-4 text-decoration-none text-black fw-semibold"%>
+      </div>
+      <div class="mb-3"><%= render "shared/tweets-form"%></div>
+      <%= render Tweet.order_desc %>
+    </div>
+    <div class="col">
+      Клонка
+    </div>
+  </div>
+</div>
+
+
+
+	
+

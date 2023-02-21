@@ -1,0 +1,55 @@
+<div class="tweet py-4 px-3">
+    <div class="flex-shrink-0">
+        <%= image_tag tweet.user.avatar, size: "50x50", class: "rounded-circle"%>
+    </div>
+        <p>
+        <span class="fw-semibold">
+            <%= tweet.user.display_name %>
+        </span> @<%= tweet.user.username %> . <%= formatted_date(tweet)%></p>
+    <p><%= tweet.body %></p>
+    <div class="d-flex justify-content-around tweet-action-links">
+        <div class="align-items-center">
+            <%= link_to "#", class: "text-decoration-none replies" do %>
+            <%= image_tag "tweets/reply.png", class: "tweets-action-icon" %>
+                <span>Replies</span>
+            <% end %>
+        </div>
+
+         <div>
+            <%= link_to "#", class: "text-decoration-none replies" do %>
+                <%= image_tag "tweets/arrow.png", class: "tweets-action-icon" %>
+                <span>Arrow</span>
+            <% end %>
+        </div>
+
+         <div>
+         <% if tweet.likes.include?(current_user)%>
+            <%= link_to tweet_likes_path, data: {turbo_method: :delete}, class: "text-decoration-none likes" do %>
+                <%= image_tag "tweets/heart.png", class: "tweets-action-icon" %>
+                <span><%= tweet.likes.count %></span>
+            <% end %>
+
+        <% else %>
+            <%= link_to tweet_likes_path(tweet), data: {turbo_method: :post}, class: "text-decoration-none likes" do %>
+                <%= image_tag "tweets/heart.png", class: "tweets-action-icon" %>
+                <span><%= tweet.likes.count %></span>
+            <% end %>
+        <% end %>
+        </div>
+
+         <div>
+            <%= link_to "#", class: "text-decoration-none views" do %>
+                <%= image_tag "tweets/binocular.png", class: "tweets-action-icon" %>
+                <span>Views</span>
+            <% end %>
+        </div>
+
+         <div>
+            <%= link_to "#", class: "text-decoration-none share" do %>
+                <%= image_tag "tweets/share.png", class: "tweets-action-icon" %>
+                <span>Share</span>
+            <% end %>
+        </div>
+        
+    </div>
+</div> 
