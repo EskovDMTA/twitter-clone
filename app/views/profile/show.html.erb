@@ -29,15 +29,15 @@
           <div>
             <p class="fs-3 fw-semibold mb-0"><%= current_user.display_name %></p>
             <p class="text-muted">@<%= current_user.username %></p>
-            <p>Bio</p>
+            <p><%=current_user.bio %></p>
             <div class="d-flex justify-content-start mb-2">
               <div class="me-4">
                 <%= image_tag "profile/location.png", size: "30x30", class: "me-1" %>
-                <span>Location</span>
+                <span><%= current_user.location %></span>
               </div>
               <div class="me-4">
                 <% image_tag "profile/web.png", size: "30x30", class: "me-1" %>
-                <span>URL</span>
+                <span><%=current_user.url %></span>
               </div>
               <div class="me-4">
                 <%= image_tag "profile/calendar.png", size: "30x30", class: "me-1" %>
