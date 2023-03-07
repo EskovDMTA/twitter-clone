@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render "shared/sidebar" %>
+    </div>
+
+    <div class="col-7">
+      <div class="mb-3">
+        <div class="mb-5 pt-4">
+          <%= link_to :back, class: "fs-4 text-decoration-none text-black fw-semibold" do %>
+            <%= image_tag "tweets/back.png", size: "30x30", class: "me-1" %>
+            <span> <%= current_user.display_name %></span>
+            <span class="text-muted fs-6"><%= current_user.tweets.count %> Tweets</span>
+          <% end %>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <% if current_user.avatar.present? %>
+                <%= image_tag current_user.avatar, class: "rounded-circle", size: "200x200" %>
+              <% else %>
+                <%= image_tag "profile/user.png", class: "rounded-circle", size: "200x200" %>
+              <% end %>
+            </div>
+            <div class="d-flex align-items-center fs-4 mb-4">
+              <%= button_tag "Edit Profile", class: "btn btn-primary btn-lg rounded-pill", data: { "bs-toggle": "modal", "bs-target": "#editProfile" }, style: "width: 200px" %>
+            </div>
+          </div>
+
+          <div>
+            <p class="fs-3 fw-semibold mb-0"><%= current_user.display_name %></p>
+            <p class="text-muted">@<%= current_user.username %></p>
+            <p>Bio</p>
+            <div class="d-flex justify-content-start mb-2">
+              <div class="me-4">
+                <%= image_tag "profile/location.png", size: "30x30", class: "me-1" %>
+                <span>Location</span>
+              </div>
+              <div class="me-4">
+                <% image_tag "profile/web.png", size: "30x30", class: "me-1" %>
+                <span>URL</span>
+              </div>
+              <div class="me-4">
+                <%= image_tag "profile/calendar.png", size: "30x30", class: "me-1" %>
+                <span>Join Date</span>
+              </div>
+
+              <div class="d-flex justify-content-start">
+                <div class="me-4">
+                  <span class="fw-semibold">14</span> Following
+                </div>
+                <div class="me-4">
+                  <span class="fw-semibold">35</span> Followers
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Profile modal -->
+<div class="modal" id="editProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: current_user, url: profile_path, data: {turbo_method: "put"}, class: "row g-3" do |f| %>
+          <div class="col-md-12">
+            <%= f.label :username, class: "form-label" %>
+            <%= f.text_field :username, class: "form-control" %>
+          </div>
+
+          <div class="col-md-12">
+            <%= f.label :display_name, class: "form-label" %>
+            <%= f.text_field :display_name, class: "form-control" %>
+          </div>
+
+          <div class="col-md-12">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+
+          <div class="col-md-12">
+            <%= f.label :bio, class: "form-label" %>
+            <%= f.text_area :bio, class: "form-control" %>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.label :location, class: "form-label" %>
+            <%= f.text_field :location, class: "form-control" %>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.label :url, class: "form-label" %>
+            <%= f.text_field :url, class: "form-control" %>
+          </div>
+
+          <div class="col-md-12">
+            <%= f.label :avatar, class: "form-label" %>
+            <%= f.file_field :avatar, class: "form-control" %>
+          </div>
+
+          <%= f.submit "Обновить профиль", class: "btn btn-primary btn-lg rounded-pill" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

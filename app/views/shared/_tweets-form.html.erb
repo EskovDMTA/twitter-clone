@@ -1,6 +1,6 @@
- <%= form_with model: Tweet.new, url: tweets_path, local: true, class: "w-100"  do |f| %>
+ <%= form_with model: Tweet.new, url:  tweets_path, method: :post, local: true, class: "w-100"  do |f| %>
 		<%= f.text_area :body, placeholder: "Что-то произошло ?", class:"form-control tweet-input mb-4" %>
-        <div class="d-flex justify-content-end">
-		    <%= f.submit "Create tweet", class: "btn btn-primary btn-lg rounded-pill" %>
+   	     <div class="d-flex justify-content-end">
+		    <%= f.submit button_tag, class: "btn btn-primary btn-lg rounded-pill" %>
         </div>
 <% end %>

@@ -1,17 +1,18 @@
-class TweetsController < ApplicationController 
+class TweetsController < ApplicationController
+  def show
+    @tweet = Tweet.find(params[:id])
+  end
+  def create
+    tweet = Tweet.new(tweet_params.merge(user: current_user))
+    if tweet.save
+      redirect_to root_path
+    end
+  end
 
-	def create 
-		tweet = Tweet.new(tweet_params.merge(user: current_user))
-		if tweet.save
-			redirect_to root_path
-		end
-	end
+  private
 
-	private 
-
-	def tweet_params 
-		params.require(:tweet).permit(:body)
-	end
-
+  def tweet_params
+    params.require(:tweet).permit(:body)
+  end
 
 end

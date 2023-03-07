@@ -1,16 +1,17 @@
-class LikesController < ApplicationController
+class BookmarksController < ApplicationController
   before_action :authenticate_user!
   def create
-    @likes = current_user.likes.create(tweet: tweet)
-    if @likes.save
+    @bookmark = current_user.bookmarks.create(tweet: tweet)
+    if @bookmark.save
       redirect_to dashboard_path
     end
   end
 
   def destroy
-    @likes = tweet.likes.find(params[:id])
-    @likes.destroy
+    @bookmark = tweet.bookmarks.find(params[:id])
+    @bookmark.destroy
     redirect_to dashboard_path
+
   end
 
   private
@@ -18,4 +19,6 @@ class LikesController < ApplicationController
   def tweet
     @tweet ||= Tweet.find(params[:tweet_id])
   end
+
 end
+

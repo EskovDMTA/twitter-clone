@@ -1,15 +1,16 @@
-class LikesController < ApplicationController
+class RetweetsController < ApplicationController
   before_action :authenticate_user!
+
   def create
-    @likes = current_user.likes.create(tweet: tweet)
-    if @likes.save
+    @retweets = current_user.retweets.create(tweet: tweet)
+    if @retweets.save
       redirect_to dashboard_path
     end
   end
 
   def destroy
-    @likes = tweet.likes.find(params[:id])
-    @likes.destroy
+    @retweets = tweet.retweets.find(params[:id])
+    @retweets.destroy
     redirect_to dashboard_path
   end
 

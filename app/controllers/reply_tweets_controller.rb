@@ -1,0 +1,22 @@
+class ReplyTweetsController < ApplicationController
+  before_action :authenticate_user!
+
+  def create
+    @tweet = tweet.reply_tweets.create(tweet_params.merge(user: current_user))
+
+    if @tweet.save
+      redirect_to tweets_path tweet.id
+    end
+  end
+
+  private
+
+  def tweet
+    @tweet ||= Tweet.find(params[:tweet_id])
+  end
+
+  def tweet_params
+    params.require(:tweet).permit(:body)
+  end
+
+end
