@@ -67,7 +67,7 @@
           <%= image_tag "tweets/bookmark-active.png", class: "tweets-action-icon" %>
           <span>Bookmarked</span>
         <% end %>
-]
+
       <% else %>
         <%= link_to tweet_bookmarks_path(tweet), data: { turbo_method: :post, "ignore-click" => true }, class: "text-decoration-none likes" do %>
           <%= image_tag "tweets/bookmark.png", class: "tweets-action-icon" %>

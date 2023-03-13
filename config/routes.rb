@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   patch :profile, to: "profile#update"
 
   resources :usernames, only: [:new, :update]
+
+  resources :users, only: :show do
+    resources :followings, only: [:create, :destroy]
+    resources :bookmarks, only: :index
+  end
 end

@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render "shared/sidebar" %>
+    </div>
+
+    <div class="col-7">
+      <div class="mb-3">
+        <div class="mb-5 pt-4">
+          <%= link_to :back, class: "fs-4 text-decoration-none text-black fw-semibold" do %>
+            <%= image_tag "tweets/back.png", size: "30x30", class: "me-1" %>
+            <span> <%= @user.display_name %></span>
+            <span class="text-muted fs-6"><%= @user.tweets.count %> Tweets</span>
+          <% end %>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <% if @user.avatar.present? %>
+                <%= image_tag @user.avatar, class: "rounded-circle", size: "200x200" %>
+              <% else %>
+                <%= image_tag "profile/user.png", class: "rounded-circle", size: "200x200" %>
+              <% end %>
+            </div>
+            <div class="d-flex align-items-center fs-4 mb-4">
+              <% if current_user.followers.include?(@user) %>
+                <%= link_to "Unfollow", user_following_path(current_user, @user.followings.find_by(following_user_id: current_user)), data: { turbo_method: :delete }, class: "btn btn-primary btn-lg rounded-pill", style: "width: 150px" %>
+              <% else %>
+                <%= link_to "Follow", user_followings_path(@user, following_user_id: current_user), data: { "turbo-method": :post }, class: "btn btn-primary btn-lg rounded-pill", style: "width: 150px" %>
+              <% end %>
+            </div>
+          </div>
+
+          <div>
+            <p class="fs-3 fw-semibold mb-0"><%= @user.display_name %></p>
+            <p class="text-muted">@<%= @user.username %></p>
+            <p><%= @user.bio %></p>
+            <div class="d-flex justify-content-atart mb-2">
+              <div class="me-4">
+                <%= image_tag "profile/location.png", size: "20x20", class: "me-1" %>
+                <span><%= @user.location %></span>
+              </div>
+
+              <div class="me-4">
+                <%= image_tag "profile/web.png", size: "20x20", class: "me-1" %>
+                <span><%= @user.url %></span>
+              </div>
+
+              <div class="me-4">
+                <%= image_tag "profile/calendar.png", size: "20x20", class: "me-1" %>
+                <span><%= @user.created_at.strftime("%B %d") %></span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start">
+              <div class="me-4">
+                <span class="fw-semibold"><%= @user.followers.count %></span> Following
+              </div>
+              <div class="me-4">
+                <span class="fw-semibold"><%= @user.following_users.count %></span> Followers
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      Column
+    </div>
+  </div>
+</div>
