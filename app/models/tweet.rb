@@ -8,7 +8,7 @@ class Tweet < ApplicationRecord
   has_many :retweets, dependent: :destroy
   has_many :retweeted_users, through: :retweets, source: :user
 
-
+  has_and_belongs_to_many :hashtags
   belongs_to :parent, class_name: "Tweet",
              optional: true, counter_cache: :reply_tweets_count
 
