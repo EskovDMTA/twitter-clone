@@ -2,13 +2,13 @@
     <div class="row">
         <aside class="col side-navbar">
 
-            <%= link_to root_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to root_path, class: "d-flex align-items-center fs-4 mb-4 sidebar-link" do %>
                 <div class="py-4 px-4 rounded-circle">
                     <%= image_tag "navbar/twitter_icon.svg", class: "twiiter-icon" %>
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("dashboard")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/homepage_icon.png", class: "images-icon" %>
@@ -17,7 +17,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("review")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/explorer_icon.png", class: "images-icon" %>
@@ -26,7 +26,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("notification")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/notification_icon.png", class: "images-icon" %>
@@ -35,7 +35,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("messages")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/messages_icon.png", class: "images-icon" %>
@@ -44,7 +44,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to user_bookmarks_path(current_user), class: "d-flex align-items-center fs-4 mb-4 #{active_link?("bookmarks")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/bookmark_icon.png", class: "images-icon" %>
@@ -53,7 +53,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to profile_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("profile")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/profile_icon.png", class: "images-icon" %>
@@ -62,7 +62,7 @@
                 </div>
             <% end %>
 
-            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4" do %>
+            <%= link_to dashboard_path, class: "d-flex align-items-center fs-4 mb-4 #{active_link?("more")}" do %>
                 <div class="px-3 py-2 rounded-pill">
                     <span class="me-4 position-relative">
                         <%= image_tag "navbar/unicorn.png", class: "images-icon" %>

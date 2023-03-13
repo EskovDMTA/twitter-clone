@@ -9,7 +9,7 @@
       <div class="mb-4 pt-4">
         <%=link_to "На главную", root_path, class:"fs-4 text-decoration-none text-black fw-semibold"%>
       </div>
-      <div class="mb-3"><%= render "shared/tweets-form"%></div>
+      <div class="mb-3"><%= render "shared/tweets-form", button_tag: "tweet", url: tweets_path %></div>
       <%= render Tweet.order_desc %>
     </div>
     <div class="col">

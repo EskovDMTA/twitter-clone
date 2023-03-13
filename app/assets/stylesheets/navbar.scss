@@ -1,30 +1,37 @@
-.navbar-menu{
-	text-align: left;
-	list-style: none;
-	padding-left: 2rem;
-	
-}
-aside.side-navbar {
-	a{ text-decoration: none;
-		div:hover{
-			opacity: 0.8;
-			background-color: $gray-200;
-			transition: all .15s ease-in-out;
-		
-			
-		}
-	}
+.navbar-menu {
+  text-align: left;
+  list-style: none;
+  padding-left: 2rem;
 }
 
-.twiiter-icon{
-	width: 60px;
-	height: 60px;
+aside.side-navbar {
+  a {
+    text-decoration: none;
+
+    div:hover {
+      opacity: 0.8;
+      background-color: $gray-200;
+      transition: all .15s ease-in-out;
+
+
+    }
+    &.active{
+      color: #1e2125;
+      font-weight: bold;
+
+    }
+  }
+}
+
+.twiiter-icon {
+  width: 60px;
+  height: 60px;
 }
 
 
 .images-icon {
-	width: 40px;
-	height: 40px;
-	margin-right: 10px
+  width: 40px;
+  height: 40px;
+  margin-right: 10px
 
 }
